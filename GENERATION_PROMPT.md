@@ -13,8 +13,8 @@
 - الحزمة: `com.bosla.template`
 - `minSdk 24` ، `compileSdk 35` ، `targetSdk 35` ، Kotlin، Java 17
 - المكتبات المتاحة فقط (لا تضف أي مكتبة جديدة):
-`androidx.core:core-ktx` ، `androidx.appcompat:appcompat` ،
-`com.google.android.material:material` ، `androidx.constraintlayout:constraintlayout`
+ `androidx.core:core-ktx` ، `androidx.appcompat:appcompat` ،
+ `com.google.android.material:material` ، `androidx.constraintlayout:constraintlayout`
 - النشاط الوحيد: `MainActivity` (شاشة واحدة، إلا إذا كان الوصف يتطلب شاشة ثانية بوضوح)
 - الواجهة بـ ViewBinding — ملف التخطيط `activity_main.xml` يولّد الكلاس `ActivityMainBinding`
 - كل النصوص الظاهرة للمستخدم في `res/values/strings.xml` (العربية مسموحة)
