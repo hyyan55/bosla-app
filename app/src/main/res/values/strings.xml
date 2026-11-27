@@ -1,5 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">آلة حاسبة</string>
-    <string name="div_by_zero">لا يمكن القسمة على صفر</string>
+    <string name="app_name">متجر العطور الملكية</string>
+    <string name="title_perfumes">تشكيلة العطور الفاخرة</string>
+    <string name="btn_add_to_cart">إضافة للسلة</string>
+    <string name="cart_title">سلة المشتريات</string>
+    <string name="total_price">المجموع الكلي: </string>
+    <string name="currency">ريال</string>
+    <string name="empty_cart">سلة المشتريات فارغة</string>
+    <string name="checkout_success">تم إتمام طلبك بنجاح! شكراً لتسوقك.</string>
+    <string name="btn_checkout">إتمام الشراء</string>
+    
+    <!-- أسماء العطور -->
+    <string name="perfume_1_name">عطر الأخشاب الملكية</string>
+    <string name="perfume_1_desc">مزيج ساحر من العود وخشب الصندل الفاخر.</string>
+    <string name="perfume_1_price">350</string>
+
+    <string name="perfume_2_name">عطر الياسمين الفرنسي</string>
+    <string name="perfume_2_desc">نوتات زهرية منعشة تدوم طوال اليوم.</string>
+    <string name="perfume_2_price">280</string>
+
+    <string name="perfume_3_name">عطر المسك الأبيض</string>
+    <string name="perfume_3_desc">رائحة نقية وهادئة تناسب كل الأوقات.</string>
+    <string name="perfume_3_price">220</string>
+
+    <string name="perfume_4_name">عطر العنبر العتيق</string>
+    <string name="perfume_4_desc">عبق شرقي أصيل يعكس الفخامة والجاذبية.</string>
+    <string name="perfume_4_price">450</string>
 </resources>
