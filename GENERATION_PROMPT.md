@@ -11,10 +11,10 @@
 
 ## القالب الثابت (لا تغيّره)
 - الحزمة: `com.bosla.template`
-- `minSdk 24` ، `compileSdk 35` ، `targetSdk 35` ، Kotlin، Java 17
+- `minSdk 24`، `compileSdk 35`، `targetSdk 35`، Kotlin، Java 17
 - المكتبات المتاحة فقط (لا تضف أي مكتبة جديدة):
-  `androidx.core:core-ktx` ، `androidx.appcompat:appcompat` ،
-  `com.google.android.material:material` ، `androidx.constraintlayout:constraintlayout`
+`androidx.core:core-ktx`، `androidx.appcompat:appcompat`،
+`com.google.android.material:material`، `androidx.constraintlayout:constraintlayout`
 - النشاط الوحيد: `MainActivity` (شاشة واحدة، إلا إذا كان الوصف يتطلب شاشة ثانية بوضوح)
 - الواجهة بـ ViewBinding — ملف التخطيط `activity_main.xml` يولّد الكلاس `ActivityMainBinding`
 - كل النصوص الظاهرة للمستخدم في `res/values/strings.xml` (العربية مسموحة)
@@ -44,7 +44,7 @@
 كرر الكتلة لكل ملف. لا تكتب أي نص قبل أول `### FILE:` ولا بعده.
 
 ## صور يرفعها المستخدم (إن وُجدت)
-- إن أُرفقت صور مع الوصف، ستجد قسماً في نهاية البرومبت يسردها بأسماء موارد مثل `img_1.jpg` و `img_2.png` — هذه الصور موجودة فعلاً داخل المشروع في `app/src/main/res/drawable/`، فاستخدمها كموارد محلية (`R.drawable.img_1` مثلاً: شعار في الأعلى، أو صور في شبكة/قائمة حسب الوصف).
+- إن أُرفقت صور مع الوصف، ستجد قسماً في نهاية البرومبت يسردها بأسماء مواردها الحقيقية — هذه الصور موجودة فعلاً داخل المشروع في `app/src/main/res/drawable/`، فاستخدمها كموارد محلية بأسمائها المذكورة في القسم فقط (شعار في الأعلى، أو صور في شبكة/قائمة حسب الوصف). لا تخترع أي اسم مورد إطلاقاً، وإن لم يوجد قسم صور فلا تذكر أي `drawable` إطلاقاً (عدا `ic_launcher_foreground` إن احتجته).
 - لا تحمّل أي صورة من رابط خارجي أبداً، ولا تولّد صوراً بديلة، ولا تكتب كود تحميل من الإنترنت — التطبيق يعمل دون اتصال.
 - لا تولّد أي ملف صورة؛ الملفات موجودة أصلاً. إن لم يُذكر أي قسم صور، تجاهل هذا البند تماماً.
 
