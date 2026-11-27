@@ -3,24 +3,29 @@ package com.bosla.template
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bosla.template.databinding.ActivityMainBinding
-import java.util.Locale
-import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private var operand: Double? = null
-    private var pendingOperator: Char? = null
     private var currentInput = ""
-    private var freshInput = true
+    private var firstOperand: Double? = null
+    private var currentOperator: String? = null
+    private var isNewOperation = true
+    private var isErrorState = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val digits = mapOf(
+        setupNumericButtons()
+        setupOperatorButtons()
+        setupControlButtons()
+    }
+
+    private fun setupNumericButtons() {
+        val numberButtons = mapOf(
             binding.btn0 to "0",
             binding.btn1 to "1",
             binding.btn2 to "2",
@@ -32,93 +37,183 @@ class MainActivity : AppCompatActivity() {
             binding.btn8 to "8",
             binding.btn9 to "9"
         )
-        digits.forEach { (button, digit) ->
-            button.setOnClickListener { onDigit(digit) }
-        }
 
-        binding.btnAdd.setOnClickListener { onOperator('+') }
-        binding.btnSub.setOnClickListener { onOperator('-') }
-        binding.btnMul.setOnClickListener { onOperator('*') }
-        binding.btnDiv.setOnClickListener { onOperator('/') }
-        binding.btnClear.setOnClickListener { onClear() }
-        binding.btnEquals.setOnClickListener { onEquals() }
-    }
-
-    private fun onDigit(digit: String) {
-        if (freshInput) {
-            currentInput = ""
-            freshInput = false
-        }
-        if (currentInput.length >= 12) return
-        if (currentInput == "0") currentInput = ""
-        currentInput += digit
-        show(currentInput)
-    }
-
-    private fun onOperator(op: Char) {
-        val value = currentInput.toDoubleOrNull()
-        if (value != null) {
-            operand = if (operand != null && pendingOperator != null && !freshInput) {
-                compute(operand!!, value, pendingOperator!!) ?: run {
-                    showError()
-                    return
-                }
-            } else {
-                value
+        for ((button, value) in numberButtons) {
+            button.setOnClickListener {
+                appendDigit(value)
             }
         }
-        pendingOperator = op
-        freshInput = true
+
+        binding.btnDot.setOnClickListener {
+            appendDot()
+        }
     }
 
-    private fun onEquals() {
-        val value = currentInput.toDoubleOrNull() ?: return
-        val op = pendingOperator ?: return
-        val a = operand ?: return
-        val result = compute(a, value, op) ?: run {
-            showError()
+    private fun setupOperatorButtons() {
+        val operators = mapOf(
+            binding.btnAdd to "+",
+            binding.btnSubtract to "-",
+            binding.btnMultiply to "×",
+            binding.btnDivide to "÷"
+        )
+
+        for ((button, op) in operators) {
+            button.setOnClickListener {
+                setOperator(op)
+            }
+        }
+
+        binding.btnEquals.setOnClickListener {
+            calculateResult()
+        }
+    }
+
+    private fun setupControlButtons() {
+        binding.btnClear.setOnClickListener {
+            clearAll()
+        }
+
+        binding.btnDelete.setOnClickListener {
+            deleteLastChar()
+        }
+    }
+
+    private fun appendDigit(digit: String) {
+        if (isErrorState) {
+            clearAll()
+        }
+
+        if (isNewOperation) {
+            currentInput = if (digit == "0") "0" else digit
+            isNewOperation = false
+        } else {
+            if (currentInput == "0") {
+                currentInput = digit
+            } else {
+                if (currentInput.length < 15) {
+                    currentInput += digit
+                }
+            }
+        }
+        updateDisplay(currentInput)
+    }
+
+    private fun appendDot() {
+        if (isErrorState) {
+            clearAll()
+        }
+
+        if (isNewOperation) {
+            currentInput = "0."
+            isNewOperation = false
+        } else if (!currentInput.contains(".")) {
+            currentInput = if (currentInput.isEmpty()) "0." else "$currentInput."
+        }
+        updateDisplay(currentInput)
+    }
+
+    private fun setOperator(op: String) {
+        if (isErrorState) return
+
+        if (currentInput.isNotEmpty()) {
+            val inputValue = currentInput.toDoubleOrNull()
+            if (inputValue != null) {
+                if (firstOperand != null && currentOperator != null && !isNewOperation) {
+                    val intermediateResult = performCalculation(firstOperand!!, inputValue, currentOperator!!)
+                    if (intermediateResult == null) {
+                        showError(getString(R.string.error_divide_by_zero))
+                        return
+                    }
+                    firstOperand = intermediateResult
+                    updateDisplay(formatResult(intermediateResult))
+                } else {
+                    firstOperand = inputValue
+                }
+            }
+        }
+        currentOperator = op
+        isNewOperation = true
+    }
+
+    private fun calculateResult() {
+        if (isErrorState || firstOperand == null || currentOperator == null || isNewOperation) {
             return
         }
-        currentInput = formatResult(result)
-        show(currentInput)
-        operand = null
-        pendingOperator = null
-        freshInput = true
+
+        val secondOperand = currentInput.toDoubleOrNull() ?: return
+        val result = performCalculation(firstOperand!!, secondOperand, currentOperator!!)
+
+        if (result == null) {
+            showError(getString(R.string.error_divide_by_zero))
+        } else {
+            currentInput = formatResult(result)
+            updateDisplay(currentInput)
+            firstOperand = null
+            currentOperator = null
+            isNewOperation = true
+        }
     }
 
-    private fun onClear() {
-        operand = null
-        pendingOperator = null
-        currentInput = ""
-        freshInput = true
-        show("0")
-    }
-
-    private fun compute(a: Double, b: Double, op: Char): Double? {
-        return when (op) {
-            '+' -> a + b
-            '-' -> a - b
-            '*' -> a * b
-            '/' -> if (b == 0.0) null else a / b
+    private fun performCalculation(operand1: Double, operand2: Double, operator: String): Double? {
+        return when (operator) {
+            "+" -> operand1 + operand2
+            "-" -> operand1 - operand2
+            "×" -> operand1 * operand2
+            "÷" -> {
+                if (operand2 == 0.0) null else operand1 / operand2
+            }
             else -> null
         }
     }
 
-    private fun showError() {
-        show(getString(R.string.div_by_zero))
-        operand = null
-        pendingOperator = null
+    private fun deleteLastChar() {
+        if (isErrorState) {
+            clearAll()
+            return
+        }
+
+        if (isNewOperation) return
+
+        if (currentInput.isNotEmpty()) {
+            currentInput = currentInput.dropLast(1)
+            if (currentInput.isEmpty() || currentInput == "-") {
+                currentInput = "0"
+                isNewOperation = true
+            }
+            updateDisplay(currentInput)
+        }
+    }
+
+    private fun clearAll() {
+        currentInput = "0"
+        firstOperand = null
+        currentOperator = null
+        isNewOperation = true
+        isErrorState = false
+        updateDisplay("0")
+    }
+
+    private fun showError(message: String) {
+        isErrorState = true
         currentInput = ""
-        freshInput = true
+        firstOperand = null
+        currentOperator = null
+        binding.tvDisplay.text = message
     }
 
-    private fun formatResult(value: Double): String {
-        if (value.isNaN() || value.isInfinite()) return value.toString()
-        if (value % 1.0 == 0.0 && abs(value) < 1e15) return value.toLong().toString()
-        return String.format(Locale.US, "%.10f", value).trimEnd('0').trimEnd('.')
+    private fun updateDisplay(value: String) {
+        binding.tvDisplay.text = value
     }
 
-    private fun show(text: String) {
-        binding.textDisplay.text = text
+    private fun formatResult(result: Double): String {
+        return if (result % 1.0 == 0.0) {
+            if (result > Long.MAX_VALUE.toDouble() || result < Long.MIN_VALUE.toDouble()) {
+                result.toString()
+            } else {
+                result.toLong().toString()
+            }
+        } else {
+            result.toString()
+        }
     }
 }
