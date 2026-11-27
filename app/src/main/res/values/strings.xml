@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">آلة حاسبة</string>
-    <string name="div_by_zero">لا يمكن القسمة على صفر</string>
+    <string name="app_name">تطبيق الترحيب</string>
+    <string name="welcome_title">أهلاً بك في تطبيقنا</string>
+    <string name="welcome_subtitle">يسعدنا انضمامك إلينا. اضغط على الزر أدناه لإظهار الرسالة الترحيبية.</string>
+    <string name="btn_show_message">عرض الرسالة</string>
+    <string name="toast_message">مرحباً بك! نتمنى لك تجربة رائعة وممتعة.</string>
 </resources>
