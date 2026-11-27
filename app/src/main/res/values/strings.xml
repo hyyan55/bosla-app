@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">آلة حاسبة</string>
-    <string name="div_by_zero">لا يمكن القسمة على صفر</string>
+    <string name="app_name">مفكرة المهام</string>
+    <string name="hint_task_title">عنوان المهمة...</string>
+    <string name="hint_task_description">تفاصيل المهمة...</string>
+    <string name="btn_add_task">إضافة مهمة</string>
+    <string name="empty_tasks">لا توجد مهام حالياً</string>
+    <string name="delete">حذف</string>
 </resources>
