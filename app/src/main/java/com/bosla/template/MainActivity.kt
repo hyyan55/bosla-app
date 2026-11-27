@@ -1,124 +1,116 @@
 package com.bosla.template
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bosla.template.databinding.ActivityMainBinding
-import java.util.Locale
-import kotlin.math.abs
+
+data class Task(
+    val title: String,
+    val description: String,
+    var isCompleted: Boolean = false
+)
+
+class TaskAdapter(
+    private val tasks: MutableList<Task>,
+    private val onDeleteClick: (Int) -> Unit,
+    private val onCheckChanged: (Int, Boolean) -> Unit
+) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+
+    class TaskViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val cbTask: CheckBox = view.findViewById(R.id.cbTask)
+        val tvTitle: TextView = view.findViewById(R.id.tvTitle)
+        val tvDescription: TextView = view.findViewById(R.id.tvDescription)
+        val btnDelete: ImageButton = view.findViewById(R.id.btnDelete)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_task, parent, false)
+        return TaskViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
+        val task = tasks[position]
+        holder.tvTitle.text = task.title
+        holder.tvDescription.text = task.description
+        holder.cbTask.isChecked = task.isCompleted
+
+        holder.cbTask.setOnmaterialCheckedChangeListener = null
+        holder.cbTask.setOnCheckedChangeListener { _, isChecked ->
+            onCheckChanged(position, isChecked)
+        }
+
+        holder.btnDelete.setOnClickListener {
+            onDeleteClick(position)
+        }
+    }
+
+    override fun getItemCount(): Int = tasks.size
+}
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
-    private var operand: Double? = null
-    private var pendingOperator: Char? = null
-    private var currentInput = ""
-    private var freshInput = true
+    private val taskList = mutableListOf<Task>()
+    private lateinit var taskAdapter: TaskAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val digits = mapOf(
-            binding.btn0 to "0",
-            binding.btn1 to "1",
-            binding.btn2 to "2",
-            binding.btn3 to "3",
-            binding.btn4 to "4",
-            binding.btn5 to "5",
-            binding.btn6 to "6",
-            binding.btn7 to "7",
-            binding.btn8 to "8",
-            binding.btn9 to "9"
-        )
-        digits.forEach { (button, digit) ->
-            button.setOnClickListener { onDigit(digit) }
-        }
-
-        binding.btnAdd.setOnClickListener { onOperator('+') }
-        binding.btnSub.setOnClickListener { onOperator('-') }
-        binding.btnMul.setOnClickListener { onOperator('*') }
-        binding.btnDiv.setOnClickListener { onOperator('/') }
-        binding.btnClear.setOnClickListener { onClear() }
-        binding.btnEquals.setOnClickListener { onEquals() }
-    }
-
-    private fun onDigit(digit: String) {
-        if (freshInput) {
-            currentInput = ""
-            freshInput = false
-        }
-        if (currentInput.length >= 12) return
-        if (currentInput == "0") currentInput = ""
-        currentInput += digit
-        show(currentInput)
-    }
-
-    private fun onOperator(op: Char) {
-        val value = currentInput.toDoubleOrNull()
-        if (value != null) {
-            operand = if (operand != null && pendingOperator != null && !freshInput) {
-                compute(operand!!, value, pendingOperator!!) ?: run {
-                    showError()
-                    return
+        taskAdapter = TaskAdapter(
+            tasks = taskList,
+            onDeleteClick = { position ->
+                if (position in taskList.indices) {
+                    taskList.removeAt(position)
+                    taskAdapter.notifyItemRemoved(position)
+                    updateEmptyView()
                 }
-            } else {
-                value
+            },
+            onCheckChanged = { position, isChecked ->
+                if (position in taskList.indices) {
+                    taskList[position].isCompleted = isChecked
+                }
+            }
+        )
+
+        binding.rvTasks.layoutManager = LinearLayoutManager(this)
+        binding.rvTasks.adapter = taskAdapter
+
+        binding.btnAdd.setOnClickListener {
+            val title = binding.etTitle.text.toString().trim()
+            val description = binding.etDescription.text.toString().trim()
+
+            if (title.isNotEmpty()) {
+                val newTask = Task(title, description)
+                taskList.add(0, newTask)
+                taskAdapter.notifyItemInserted(0)
+                binding.rvTasks.scrollToPosition(0)
+
+                binding.etTitle.text.clear()
+                binding.etDescription.text.clear()
+                updateEmptyView()
             }
         }
-        pendingOperator = op
-        freshInput = true
+
+        updateEmptyView()
     }
 
-    private fun onEquals() {
-        val value = currentInput.toDoubleOrNull() ?: return
-        val op = pendingOperator ?: return
-        val a = operand ?: return
-        val result = compute(a, value, op) ?: run {
-            showError()
-            return
+    private fun updateEmptyView() {
+        if (taskList.isEmpty()) {
+            binding.tvEmpty.visibility = View.VISIBLE
+            binding.rvTasks.visibility = View.GONE
+        } else {
+            binding.tvEmpty.visibility = View.GONE
+            binding.rvTasks.visibility = View.VISIBLE
         }
-        currentInput = formatResult(result)
-        show(currentInput)
-        operand = null
-        pendingOperator = null
-        freshInput = true
-    }
-
-    private fun onClear() {
-        operand = null
-        pendingOperator = null
-        currentInput = ""
-        freshInput = true
-        show("0")
-    }
-
-    private fun compute(a: Double, b: Double, op: Char): Double? {
-        return when (op) {
-            '+' -> a + b
-            '-' -> a - b
-            '*' -> a * b
-            '/' -> if (b == 0.0) null else a / b
-            else -> null
-        }
-    }
-
-    private fun showError() {
-        show(getString(R.string.div_by_zero))
-        operand = null
-        pendingOperator = null
-        currentInput = ""
-        freshInput = true
-    }
-
-    private fun formatResult(value: Double): String {
-        if (value.isNaN() || value.isInfinite()) return value.toString()
-        if (value % 1.0 == 0.0 && abs(value) < 1e15) return value.toLong().toString()
-        return String.format(Locale.US, "%.10f", value).trimEnd('0').trimEnd('.')
-    }
-
-    private fun show(text: String) {
-        binding.textDisplay.text = text
     }
 }
