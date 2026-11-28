@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/spacing_xl">
+
+            <!-- المنطقة الأولى: الـ Hero -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/hero_section"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/hero_height"
+                android:background="@drawable/gradient_hero"
+                android:padding="@dimen/spacing_lg"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_app_title"
+                    style="@style/TextHeadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/app_on_primary"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_hero_sub"
+                    style="@style/TextSubtitle"
+                    android:layout_width="@dimen/dimen_0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hero_subtitle"
+                    android:textColor="@color/app_on_primary"
+                    android:alpha="0.9"
+                    app:layout_constraintTop_toBottomOf="@id/tv_app_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_hero_action"
+                    android:layout_marginTop="@dimen/spacing_xs" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_hero_action"
+                    style="@style/ButtonSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hero_action"
+                    android:textColor="@color/app_on_primary"
+                    app:strokeColor="@color/app_on_primary"
+                    app:icon="@drawable/ic_add"
+                    app:iconTint="@color/app_on_primary"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- صف الإحصاءات -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_stats"
+                    style="@style/CardStyle"
+                    android:layout_width="@dimen/dimen_0dp"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/app_surface"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/spacing_md"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dimen_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_stat_total_val"
+                                style="@style/TextTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/bosla_blue" />
+
+                            <TextView
+                                style="@style/TextCaption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/stat_total" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/stroke_thin"
+                            android:layout_height="match_parent"
+                            android:background="@color/app_border" />
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dimen_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_stat_completed_val"
+                                style="@style/TextTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/status_completed" />
+
+                            <TextView
+                                style="@style/TextCaption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/stat_completed" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/stroke_thin"
+                            android:layout_height="match_parent"
+                            android:background="@color/app_border" />
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dimen_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_stat_urgent_val"
+                                style="@style/TextTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/bosla_gold" />
+
+                            <TextView
+                                style="@style/TextCaption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/stat_urgent" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- المنطقة الثانية: الشريط المميز الأققي -->
+            <TextView
+                android:id="@+id/tv_featured_label"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/section_featured"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:layout_marginStart="@dimen/spacing_lg"
+                app:layout_constraintTop_toBottomOf="@id/hero_section"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_featured"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/spacing_lg"
+                android:paddingEnd="@dimen/spacing_lg"
+                android:layout_marginTop="@dimen/spacing_sm"
+                app:layout_constraintTop_toBottomOf="@id/tv_featured_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- المنطقة الثالثة: قائمة العناصر والبحث والتصنيفات -->
+            <TextView
+                android:id="@+id/tv_all_label"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/section_all"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:layout_marginStart="@dimen/spacing_lg"
+                app:layout_constraintTop_toBottomOf="@id/rv_featured"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- شريط البحث -->
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="@dimen/search_height"
+                android:background="@drawable/gradient_card"
+                android:backgroundTint="@color/app_surface"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="@dimen/spacing_sm"
+                android:hint="@string/search_hint"
+                android:paddingStart="@dimen/spacing_lg"
+                android:paddingEnd="@dimen/spacing_lg"
+                android:textColor="@color/app_text_primary"
+                android:textColorHint="@color/app_text_secondary"
+                android:textSize="@dimen/text_body"
+                android:layout_marginStart="@dimen/spacing_lg"
+                android:layout_marginEnd="@dimen/spacing_lg"
+                android:layout_marginTop="@dimen/spacing_sm"
+                app:layout_constraintTop_toBottomOf="@id/tv_all_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- رقاقات التصنيف -->
+            <HorizontalScrollView
+                android:id="@+id/scroll_chips"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:paddingStart="@dimen/spacing_lg"
+                android:paddingEnd="@dimen/spacing_lg"
+                app:layout_constraintTop_toBottomOf="@id/et_search"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_cats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_all"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/cat_all" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_work"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cat_work" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_personal"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cat_personal" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_study"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cat_study" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <!-- شبكة العناصر -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_main_list"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:paddingStart="@dimen/spacing_md"
+                android:paddingEnd="@dimen/spacing_md"
+                android:layout_marginTop="@dimen/spacing_sm"
+                app:layout_constraintTop_toBottomOf="@id/scroll_chips"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- الحالة الفارغة -->
+            <LinearLayout
+                android:id="@+id/layout_empty"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_xl"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/scroll_chips"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_lg"
+                    android:layout_height="@dimen/icon_size_lg"
+                    android:src="@drawable/ic_notes"
+                    app:tint="@color/app_text_secondary" />
+
+                <TextView
+                    style="@style/TextSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empty_title"
+                    android:layout_marginTop="@dimen/spacing_sm" />
+
+                <TextView
+                    style="@style/TextBody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empty_subtitle"
+                    android:layout_marginTop="@dimen/spacing_xs" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_reset_empty"
+                    style="@style/ButtonSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empty_action"
+                    android:layout_marginTop="@dimen/spacing_md" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_lg"
+        android:contentDescription="@string/hero_action"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/bosla_blue"
+        app:tint="@color/app_on_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
