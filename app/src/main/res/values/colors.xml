@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bosla_navy">#101D35</color>
-    <color name="bosla_blue">#2878E8</color>
-    <color name="bosla_gold">#D5B45C</color>
-    <color name="white">#FFFFFF</color>
-    <color name="ic_launcher_background">#101D35</color>
+    <!-- الألوان الإلزامية لتشغيل السمة -->
+    <color name="bosla_navy">#1A0A10</color>
+    <color name="bosla_blue">#5C1D24</color>
+    <color name="bosla_gold">#D4AF37</color>
+    <color name="ic_launcher_background">#1A0A10</color>
+
+    <!-- ألوان هوية متجر العطور (فاخرة ودافئة) -->
+    <color name="perfume_dark_burgundy">#3D0C11</color>
+    <color name="perfume_wine">#5C1D24</color>
+    <color name="perfume_gold">#D4AF37</color>
+    <color name="perfume_gold_light">#FFF8E7</color>
+    <color name="perfume_bg">#FAF8F5</color>
+    <color name="perfume_surface">#FFFFFF</color>
+    <color name="perfume_text_primary">#22181C</color>
+    <color name="perfume_text_secondary">#756A6E</color>
+    <color name="perfume_card_border">#EFE8E1</color>
+    <color name="perfume_red_accent">#C62828</color>
 </resources>
