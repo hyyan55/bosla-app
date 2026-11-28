@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">آلة حاسبة</string>
-    <string name="div_by_zero">لا يمكن القسمة على صفر</string>
+    <string name="app_name">أريج العطور</string>
+    <string name="app_subtitle">تشكيلة فاخرة من أرقى العطور الشرقية والغربية</string>
+    
+    <!-- Navigation Tabs -->
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_favorites">المفضلة</string>
+    <string name="nav_cart">السلة</string>
+    
+    <!-- Categories -->
+    <string name="category_all">الكل</string>
+    <string name="category_oud">عود وخشب</string>
+    <string name="category_musk">مسك وعنبر</string>
+    <string name="category_floral">زهور وفاكهة</string>
+
+    <!-- Sorting -->
+    <string name="sort_price">السعر</string>
+    <string name="sort_rating">التقييم</string>
+    
+    <!-- General UI -->
+    <string name="search_hint">ابحث عن عطرك المفضل...</string>
+    <string name="currency">ر.س</string>
+    <string name="add_to_cart">إضافة للسلة</string>
+    <string name="in_cart">في السلة</string>
+    <string name="notes_title">مكونات العطر:</string>
+    <string name="rating_prefix">★ </string>
+    <string name="total_price">المجموع الإجمالي:</string>
+    <string name="checkout">إتمام الطلب</string>
+    <string name="back">رجوع</string>
+
+    <!-- Feedback Messages -->
+    <string name="added_to_cart">تمت إضافة العطر إلى السلة</string>
+    <string name="removed_from_cart">تمت إزالة العطر من السلة</string>
+    <string name="added_to_fav">تمت الإضافة للمفضلة</string>
+    <string name="removed_from_fav">تمت الإزالة من المفضلة</string>
+    <string name="checkout_success">تم تسجيل طلبك بنجاح!</string>
+
+    <!-- Empty States -->
+    <string name="empty_search_title">لم نجد نتائج للبحث</string>
+    <string name="empty_search_desc">جرب البحث بكلمة أخرى أو اختر تصنيفاً آخر</string>
+    <string name="empty_cart_title">سلة التسوق فارغة</string>
+    <string name="empty_cart_desc">لم تقم بإضافة أي عطر للسلة بعد</string>
+    <string name="empty_fav_title">قائمة المفضلة فارغة</string>
+    <string name="empty_fav_desc">اضغط على رمز القلب لتنسيق عطورك المفضلة هنا</string>
+    <string name="btn_back_home">العودة للتسوق</string>
 </resources>
