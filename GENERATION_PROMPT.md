@@ -1,11 +1,11 @@
-# برومبت التوليد — بوصلة التطبيقات (الإصدار 2.2)
+# برومبت التوليد — بوصلة التطبيقات (الإصدار 2.3)
 
 هذا هو البرومبت الذي يُرسل إلى Gemini مع وصف المستخدم. يولّد Gemini كود التطبيق
 كاملاً داخل القالب الثابت. لا يولّد المشروع من الصفر أبداً — القالب ثابت،
 والمولّد يبدّل فقط الملفات المسموحة أدناه.
 
-الإصدار 2.2 — فوق 2.1: حركات وانتقالات، تدرجات لونية للـ Hero والبطاقات،
-وشاشة رئيسية أغنى (Hero + شريط مميّز أفقي + الشبكة الرئيسية).
+الإصدار 2.3 — فوق 2.2: قائمة بيضاء بأسماء أنماط Material3 المسموحة فقط —
+ممنوع اختراع اسم نمط (النمط `Chip.Choice` غير موجود وأسقط بناء c9c3bd9c).
 
 ---
 
@@ -41,6 +41,7 @@
 - `res/values/styles.xml` (إلزامي): أنماط نص `TextHeadline` (أصلها `TextAppearance.Material3.HeadlineSmall`) و `TextTitle` (أصلها `TextAppearance.Material3.TitleLarge`) و `TextSubtitle` (أصلها `TextAppearance.Material3.TitleMedium`) و `TextBody` (أصلها `TextAppearance.Material3.BodyMedium`) و `TextCaption` (أصلها `TextAppearance.Material3.BodySmall`) — كل نمط يشير إلى `@dimen/` و `@color/`؛ نمط بطاقة `CardStyle` (أصلها `Widget.Material3.CardView.Elevated`: زاوية `@dimen/corner_lg`، ظل 3dp، حد 1dp بلون `app_border`)؛ نمط زر رئيسي `ButtonPrimary` (أصلها `Widget.Material3.Button`: زاوية `@dimen/corner_md`، خلفية `@color/bosla_blue`، نص `@color/app_on_primary`) ونمط زر ثانوي `ButtonSecondary` (أصلها `Widget.Material3.Button.OutlinedButton`: زاوية `@dimen/corner_md`، حد ونص بلون `@color/bosla_blue`).
 - ممنوع منعاً باتاً كتابة أي لون بصيغة `#...` أو أي مقاس `dp/sp` مباشرة داخل ملفات التخطيط — كل قيمة تأتي من `@color/` أو `@dimen/` أو `@style/`.
 - الأنماط من Material3 فقط (`Widget.Material3.*`) — ممنوع استخدام أنماط `Widget.MaterialComponents.*`.
+- أسماء الأنماط المسموحة فقط — ممنوع منعاً باتاً اختراع اسم نمط: استخدم فقط هذه الأنماط: `TextAppearance.Material3.*` للنصوص، و `Widget.Material3.CardView.Elevated` و `Widget.Material3.CardView.Filled` و `Widget.Material3.CardView.Outlined` للبطاقات، و `Widget.Material3.Button` و `Widget.Material3.Button.OutlinedButton` و `Widget.Material3.Button.TextButton` للأزرار، و `Widget.Material3.Chip.Assist` و `Widget.Material3.Chip.Filter` و `Widget.Material3.Chip.Input` و `Widget.Material3.Chip.Suggestion` للشرائح (chips). لا يوجد نمط اسمه `Widget.Material3.Chip.Choice` إطلاقاً — لا تستخدمه أبداً، وللشرائح القابلة للاختيار استخدم `Chip.Filter`. أي نمط خارج هذه القائمة ممنوع.
 
 ## الترويسة والتنقّل
 - كل تطبيق له ترويسة هوية ظاهرة: إما `MaterialToolbar` في `activity_main.xml` باسم التطبيق، أو قسم Hero أعلى الشاشة الرئيسية (اسم التطبيق + سطر وصفي قصير + خلفية تدرّج لوني `gradient_hero.xml` مع شريط مميز). الشاشة الرئيسية لا تبدأ أبداً بالبحث أو القائمة مباشرة.
@@ -105,6 +106,7 @@
 - إن استخدمت `BottomNavigationView` فملف `res/menu/bottom_nav_menu.xml` موجود، والتخطيط يستخدم `app:menu`، ولا يوجد أي `menu.add(` في الكود.
 - لا لون `#...` ولا مقاس `dp/sp` مكتوب مباشرة في أي ملف تخطيط.
 - لا نمط `Widget.MaterialComponents.*` في أي ملف.
+- كل `style="@style/Widget.Material3.*"` المستخدم في التخطيطات من القائمة البيضاء في قسم الأنماط — لا أسماء أنماط مخترعة إطلاقاً (لا `Chip.Choice` ولا غيره).
 - تفاصيل العنصر Fragment كامل، لا Dialog.
 - الـ Hero يستخدم `gradient_hero.xml` (تدرّج لا لون صلب)، والشاشة الرئيسية فيها Hero + شريط مميّز أفقي + الشبكة الرئيسية.
 - انتقالات الـ Fragments بحركة (`setCustomAnimations`)، وعناصر القائمة تدخل بحركة خفيفة، وكل بطاقة لها تموّج لمس.
