@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- مقياس التباعد -->
+    <!-- مقاييس التباعد الأساسية -->
     <dimen name="spacing_xs">4dp</dimen>
     <dimen name="spacing_sm">8dp</dimen>
     <dimen name="spacing_md">12dp</dimen>
     <dimen name="spacing_lg">16dp</dimen>
     <dimen name="spacing_xl">24dp</dimen>
-    <!-- نصف قطر الزوايا -->
+
+    <!-- زوايا الانحناء -->
     <dimen name="corner_sm">8dp</dimen>
     <dimen name="corner_md">12dp</dimen>
     <dimen name="corner_lg">16dp</dimen>
     <dimen name="corner_xl">24dp</dimen>
-    <!-- مقاسات النص -->
+
+    <!-- مقاسات النصوص -->
     <dimen name="text_headline">22sp</dimen>
     <dimen name="text_title">18sp</dimen>
     <dimen name="text_subtitle">16sp</dimen>
     <dimen name="text_body">14sp</dimen>
     <dimen name="text_caption">12sp</dimen>
-    <!-- ارتفاع المنطقة البصرية في بطاقة العنصر -->
+
+    <!-- أبعاد العناصر والمرئيات -->
     <dimen name="card_image_height">120dp</dimen>
+    <dimen name="hero_height">220dp</dimen>
+    <dimen name="featured_card_width">260dp</dimen>
+    <dimen name="icon_size_sm">16dp</dimen>
+    <dimen name="icon_size_md">24dp</dimen>
+    <dimen name="icon_size_lg">48dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="search_height">50dp</dimen>
+    <dimen name="elevation_normal">3dp</dimen>
+    <dimen name="stroke_thin">1dp</dimen>
+    <dimen name="dimen_0dp">0dp</dimen>
 </resources>
