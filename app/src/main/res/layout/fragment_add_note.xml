@@ -137,7 +137,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_add_work"
-                    style="@style/Widget.Material3.Chip.Choice"
+                    style="@style/Widget.Material3.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -145,14 +145,14 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_add_personal"
-                    style="@style/Widget.Material3.Chip.Choice"
+                    style="@style/Widget.Material3.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_personal" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_add_study"
-                    style="@style/Widget.Material3.Chip.Choice"
+                    style="@style/Widget.Material3.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cat_study" />
