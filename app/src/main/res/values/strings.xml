@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">آلة حاسبة</string>
-    <string name="div_by_zero">لا يمكن القسمة على صفر</string>
+    <string name="app_name">مُذكّرتي</string>
+    <string name="hero_title">نظّم يومك بكفاءة وسهولة</string>
+    <string name="hero_subtitle">دوّن أفكارك وتابع مهامك اليومية في مكان واحد</string>
+    <string name="hero_action">إضافة جديد</string>
+
+    <string name="stat_total">إجمالي العناصر</string>
+    <string name="stat_completed">تم إنجازها</string>
+    <string name="stat_urgent">مهام عاجلة</string>
+
+    <string name="section_featured">المهام العاجلة والمهمة</string>
+    <string name="section_all">كل الملاحظات والمهام</string>
+    <string name="section_tasks">قائمة المهام اليومية</string>
+    <string name="section_notes">دفتر الملاحظات</string>
+
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_tasks">المهام</string>
+    <string name="nav_notes">الملاحظات</string>
+
+    <string name="cat_all">الكل</string>
+    <string name="cat_work">العمل</string>
+    <string name="cat_personal">شخصي</string>
+    <string name="cat_study">دراسة</string>
+    <string name="cat_urgent">عاجل</string>
+
+    <string name="search_hint">ابحث في الملاحظات والمهام...</string>
+    <string name="empty_title">لا توجد عناصر حالياً</string>
+    <string name="empty_subtitle">جرّب البحث باسم آخر أو أضف عنصر جديد</string>
+    <string name="empty_action">عرض الكل</string>
+
+    <string name="title_add_new">إضافة عنصر جديد</string>
+    <string name="label_title">العنوان</string>
+    <string name="hint_title">أدخل عنوان الملاحظة أو المهمة</string>
+    <string name="label_desc">التفاصيل</string>
+    <string name="hint_desc">اكتب تفاصيل إضافية...</string>
+    <string name="label_type">النوع</string>
+    <string name="type_note">ملاحظة</string>
+    <string name="type_task">مهمة عمل</string>
+    <string name="label_category">التصنيف</string>
+    <string name="label_urgent">علامة عاجل / مهم</string>
+    <string name="btn_save">حفظ العنصر</string>
+    <string name="btn_cancel">إلغاء</string>
+    <string name="btn_delete">حذف</string>
+    <string name="btn_toggle_complete">تغيير حالة الإنجاز</string>
+    <string name="status_done">مكتملة</string>
+
+    <string name="msg_added">تمت إضافة العنصر بنجاح</string>
+
+    <string name="msg_deleted">تم حذف العنصر بنجاح</string>
+    <string name="msg_status_updated">تم تحديث حالة المهمة</string>
+    <string name="msg_fill_fields">يرجى كتابة العنوان والتفاصيل</string>
+    <string name="date_today">اليوم</string>
 </resources>
