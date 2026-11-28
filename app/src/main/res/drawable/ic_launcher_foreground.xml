@@ -3,13 +3,24 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+    <!-- زجاجة عطر فاخرة داخل المنطقة الآمنة -->
+    <!-- غطاء الزجاجة -->
     <path
-        android:fillColor="#2878E8"
-        android:pathData="M54,54m-38,0a38,38 0,1 1,76 0a38,38 0,1 1,-76 0" />
+        android:fillColor="#D4AF37"
+        android:pathData="M48,26 h12 v8 h-12 z" />
+    <!-- مضخة العطر -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M54,26 L62,54 L54,82 L46,54 Z" />
+        android:fillColor="#D4AF37"
+        android:pathData="M51,34 h6 v6 h-6 z" />
+    <!-- جسم زجاجة العطر -->
     <path
-        android:fillColor="#D5B45C"
-        android:pathData="M54,26 L62,54 L54,54 Z" />
+        android:fillColor="#D4AF37"
+        android:pathData="M34,40 h40 a4,4 0 0,1 4,4 v34 a6,6 0 0,1 -6,6 h-36 a6,6 0 0,1 -6,-6 v-34 a4,4 0 0,1 4,-4 z" />
+    <!-- ملصق الزجاجة الداخلي -->
+    <path
+        android:fillColor="#1A0A10"
+        android:pathData="M40,50 h28 v22 h-28 z" />
+    <path
+        android:fillColor="#D4AF37"
+        android:pathData="M44,56 h20 v2 h-20 z M47,62 h14 v2 h-14 z" />
 </vector>
