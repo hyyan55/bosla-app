@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">آلة حاسبة</string>
-    <string name="div_by_zero">لا يمكن القسمة على صفر</string>
+    <string name="app_name">شذى | متجر العطور الفاخرة</string>
+    <string name="app_subtitle">تشكيلة مختارة من أرقى العطور العالمية والشرقية</string>
+    
+    <!-- التبويبات -->
+    <string name="tab_store">المتجر</string>
+    <string name="tab_favorites">المفضلة</string>
+    <string name="tab_cart">سلة الشراء</string>
+
+    <!-- البحث والتصفية -->
+    <string name="search_hint">ابحث عن عطر، مكوّن، أو ماركة...</string>
+    <string name="cat_all">الكل</string>
+    <string name="cat_oriental">شرقي فاخر</string>
+    <string name="cat_floral">زهري ناعم</string>
+    <string name="cat_woody">خشبي دافئ</string>
+    <string name="cat_fresh">انتعاش ونظافة</string>
+
+    <!-- العناصر والتفاصيل -->
+    <string name="currency">ر.س</string>
+    <string name="add_to_cart">إضافة للسلة</string>
+    <string name="in_cart">في السلة</string>
+    <string name="perfume_notes">المكونات العطرية:</string>
+    <string name="details_title">تفاصيل العطر</string>
+    <string name="close">إغلاق</string>
+
+    <!-- السلة والحسابات -->
+    <string name="cart_title">حقيبة التسوق</string>
+    <string name="subtotal">المجموع الفرعي:</string>
+    <string name="vat">الضريبة المضافة (15%):</string>
+    <string name="total">المجموع الكلي:</string>
+    <string name="checkout_btn">إتمام الطلب الآن</string>
+    <string name="order_success">تم إرسال طلبك بنجاح! شكراً لتسوقك معنا.</string>
+    <string name="empty_cart">سلة التسوق فارغة حالياً</string>
+    <string name="empty_cart_desc">استكشف العطور الفاخرة في المتجر وأضف ما يناسب ذوقك.</string>
+    <string name="empty_fav">لا توجد عطور في المفضلة</string>
+    <string name="empty_fav_desc">اضغط على رمز القلب على أي عطر لإضافته لقائمتك المفضلة.</string>
+    <string name="added_to_cart">تمت إضافة العطر إلى السلة</string>
+    <string name="removed_from_cart">تمت إزالة العطر من السلة</string>
+    <string name="item_count_format">%1$d عطور مختارة</string>
 </resources>
