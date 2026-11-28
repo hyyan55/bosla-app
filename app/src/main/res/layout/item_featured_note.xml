@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/CardStyle"
+    android:layout_width="@dimen/featured_card_width"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/spacing_md"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_card"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_md">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_sm"
+                android:layout_height="@dimen/icon_size_sm"
+                android:src="@drawable/ic_star"
+                android:contentDescription="@string/cat_urgent" />
+
+            <TextView
+                android:id="@+id/tv_featured_cat"
+                style="@style/TextCaption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xs"
+                android:textColor="@color/app_on_primary"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_featured_title"
+            style="@style/TextSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/app_on_primary"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_featured_desc"
+            style="@style/TextBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/app_on_primary"
+            android:alpha="0.9" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
